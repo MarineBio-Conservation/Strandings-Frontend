@@ -1,3 +1,16 @@
 steps:
+  - name: node
+    entrypoint: npm
+    args: ['install']
+  - name: node
+    entrypoint: npm
+    args: ['test']
+    env:
+    - CI=true
+  - name: node
+    entrypoint: npm
+    args:  ['run', 'build']
+    env:
+    - CI=true
   - name: gcr.io/cloud-builders/gsutil
-    args: ["-m", "rsync", "-r", "-c", "-d", "./www/", "gs://$TRIGGER_NAME"]
+    args: ["-m", "rsync", "-r", "-c", "-d", "./build/", "gs://$TRIGGER_NAME"]
