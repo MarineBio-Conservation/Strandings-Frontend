@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { MarkerClusterer, Marker } from "@react-google-maps/api";
 import "./App.css";
 
@@ -43,8 +43,8 @@ function App() {
 
 
   const mapContainerStyle = {
-    height: "100vh",
-    width: "100vw",
+    height: "400px",
+    width: "400px",
   };
 
   const center = { lat: 55.9503652, lng: -6.5259577 };
@@ -52,11 +52,15 @@ function App() {
   function createKey(location) {
     return location.lat + location.lng;
   }
+ const StrandingsMap = () => {
+	const { isLoaded, loadError } = useJsApiLoader({
+				    googleMapsApiKey: "AIzaSyBVRxbVl5Qtm2LFX8ZvYZ34Wg8R_iIRV84" // ,
+				    // ...otherOptions
+				   });
+			
 
-  const StrandingsMap = () => {
-    return (
+    return !isLoaded ? <></> : (
       <>
-        <LoadScript googleMapsApiKey="AIzaSyBVRxbVl5Qtm2LFX8ZvYZ34Wg8R_iIRV84">
           <GoogleMap
             id="marker-example"
             mapContainerStyle={mapContainerStyle}
@@ -75,7 +79,6 @@ function App() {
               }
             </MarkerClusterer>
           </GoogleMap>
-        </LoadScript>
       </>
     );
   };
