@@ -43,8 +43,8 @@ function App() {
 
 
   const mapContainerStyle = {
-    height: "400px",
-    width: "400px",
+    height: "100vh",
+    width: "100vw",
   };
 
   const center = { lat: 55.9503652, lng: -6.5259577 };
@@ -53,7 +53,7 @@ function App() {
     return location.lat + location.lng;
   }
  const StrandingsMap = () => {
-	const { isLoaded, loadError } = useJsApiLoader({
+	const { isLoaded } = useJsApiLoader({
 				    googleMapsApiKey: "AIzaSyBVRxbVl5Qtm2LFX8ZvYZ34Wg8R_iIRV84" // ,
 				    // ...otherOptions
 				   });
