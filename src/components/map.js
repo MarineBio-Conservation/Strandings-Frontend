@@ -30,14 +30,14 @@ function StrandingsMap({ strandings, boundsUpdated }) {
   
   const onBoundsChange = React.useCallback(function callback() {
     if (map) {
-			console.log(map.getBounds());
+			console.log(map.getBounds().toUrlValue(0));
 			if (boundsUpdated) {
 				boundsUpdated(map.getBounds());
 			}
 		}
   }, [map, boundsUpdated]);
 
-  const options = { imagePath: process.env.PUBLIC_URL + "/images/" };
+  const options = { imagePath: process.env.PUBLIC_URL + "/images/", gridSize: 1 };
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -45,7 +45,7 @@ function StrandingsMap({ strandings, boundsUpdated }) {
       zoom={5}
       onLoad={onLoad}
       onUnmount={onUnmount}
-	  onBoundsChange={onBoundsChange}
+      onBoundsChanged={onBoundsChange}
     >
       <MarkerClusterer options={options}>
         {(clusterer) =>
