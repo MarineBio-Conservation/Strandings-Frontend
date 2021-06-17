@@ -5,7 +5,7 @@ import StrandingsMap from './components/map'
 function App() {
   const [strandings, setStrandings] = useState([]);
   useEffect(() => {
-    fetch("https://stranding-project.uc.r.appspot.com/events")
+    fetch("https://api.marinestrandings.com/events")
       .then((response) => response.json())
       .then((data) => setStrandings(data));
   }, []);
