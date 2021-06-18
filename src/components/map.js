@@ -37,7 +37,7 @@ function StrandingsMap({ strandings, boundsUpdated }) {
 		}
   }, [map, boundsUpdated]);
 
-  const options = { imagePath: process.env.PUBLIC_URL + "/images/", gridSize: 1 };
+  const options = { imagePath: process.env.PUBLIC_URL + "/images/", gridSize: 20 };
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
