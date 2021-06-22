@@ -22,7 +22,7 @@ function StrandingsTable({ strandings }) {
           className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/6"
           key={stranding.id + "region"}
         >
-          <p className="text-gray-900 whitespace-no-wrap text-center">
+          <p className="text-gray-900 whitespace-no-wrap text-center capitalize">
             {stranding.region
               ? stranding.region
               : "Lat:" +
@@ -32,7 +32,7 @@ function StrandingsTable({ strandings }) {
           </p>
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/6">
-          <p className="text-gray-900 whitespace-no-wrap text-center">
+          <p className="text-gray-900 whitespace-no-wrap text-center capitalize">
             {stranding.animal_type}
           </p>
         </td>
@@ -48,7 +48,7 @@ function StrandingsTable({ strandings }) {
           className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/6"
           key={stranding.id + "invest"}
         >
-          <p className="text-gray-900 whitespace-no-wrap text-center">
+          <p className="text-gray-900 whitespace-no-wrap text-center capitalize">
             {stranding.investigation_type
               ? stranding.investigation_type
               : "Unknown"}
@@ -58,7 +58,7 @@ function StrandingsTable({ strandings }) {
           className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/6"
           key={stranding.id + "cause"}
         >
-          <p className="text-gray-900 whitespace-no-wrap text-center">
+          <p className="text-gray-900 whitespace-no-wrap text-center capitalize">
             {stranding.causes ? stranding.causes : "Unknown"}
           </p>
         </td>
