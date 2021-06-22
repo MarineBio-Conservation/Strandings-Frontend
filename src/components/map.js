@@ -7,8 +7,8 @@ import {
 } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "100vw",
-  height: "100vh",
+  width: "100%",
+  height: "100%",
 };
 const center = { lat: 54.2307982, lng: -2.847663 };
 
@@ -30,7 +30,6 @@ function StrandingsMap({ strandings, boundsUpdated }) {
   
   const onBoundsChange = React.useCallback(function callback() {
     if (map) {
-			console.log(map.getBounds().toUrlValue(0));
 			if (boundsUpdated) {
 				boundsUpdated(map.getBounds());
 			}
