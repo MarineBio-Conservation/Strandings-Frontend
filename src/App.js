@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     let url = new URL("https://api.marinestrandings.com/events")
     Object.keys(maxBounds).forEach(key => url.searchParams.append(key, maxBounds[key]))
-    console.log(url)
+    // console.log(url)
     fetch(url,)
       .then((response) => response.json())
       .then((data) => setStrandings(data));
