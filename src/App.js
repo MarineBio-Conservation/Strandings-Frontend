@@ -1,10 +1,7 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import { FirebaseAuthProvider } from "@react-firebase/auth";
+import { Auth0Provider } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import StrandingsMap from "./components/map";
-import { config } from "./firebaseConfig";
 import StrandingsTable from "./components/table";
 
 function App() {
@@ -41,7 +38,11 @@ function App() {
 
   return (
     <div className="App">
-      <FirebaseAuthProvider firebase={firebase} {...config}>
+		  <Auth0Provider
+		      domain="dev-sscojs5p.us.auth0.com"
+		      clientId="zBTP9waUmLFPKTuNk5zoQwzai8c5vpxq"
+		      redirectUri={window.location.origin}
+		    >
         <div className="h-screen">
           <div className="h-3/5">
             <StrandingsMap strandings={strandings}  boundsUpdated={boundsUpdated} />
@@ -50,7 +51,7 @@ function App() {
             <StrandingsTable strandings={strandings} />
           </div>
         </div>
-      </FirebaseAuthProvider>
+		  </Auth0Provider>
     </div>
   );
 }
