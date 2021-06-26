@@ -11,7 +11,7 @@ function StrandingsTable({ strandings }) {
           {new Date(stranding.date).toDateString()}
         </p>
         <p
-          className="px-5 py-5 border-b border-gray-200 text-sm text-gray-900 whitespace-no-wrap text-center capitalize"
+          className="px-5 py-5 border-b border-gray-200 text-sm text-gray-900 whitespace-no-wrap text-center capitalize hidden sm:block"
           key={stranding.id + "_pos"}
         >
           {stranding.region
@@ -34,7 +34,7 @@ function StrandingsTable({ strandings }) {
           {stranding.died}
         </p>
         <p
-          className="px-5 py-5 border-b border-gray-200 text-sm text-gray-900 whitespace-no-wrap text-center capitalize"
+          className="px-5 py-5 border-b border-gray-200 text-sm text-gray-900 whitespace-no-wrap text-center capitalize hidden sm:block"
           key={stranding.id + "_investigation"}
         >
           {stranding.investigation_type
@@ -42,7 +42,7 @@ function StrandingsTable({ strandings }) {
             : "Unknown"}
         </p>
         <p
-          className="px-5 py-5 border-b border-gray-200 text-sm text-gray-900 whitespace-no-wrap text-center capitalize"
+          className="px-5 py-5 border-b border-gray-200 text-sm text-gray-900 whitespace-no-wrap text-center capitalize hidden sm:block"
           key={stranding.id + "_cause"}
         >
           {stranding.causes ? stranding.causes : "Unknown"}
@@ -57,20 +57,20 @@ function StrandingsTable({ strandings }) {
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-              <div className="min-w-full leading-normal grid grid-cols-6">
+              <div className="min-w-full leading-normal grid grid-cols-3 sm:grid-cols-6">
                 <div
                   className="px-5 py-3 border-b-2 border-gray-200 
                             bg-gray-100 text-center text-xs 
                             font-semibold text-gray-600 uppercase 
                             tracking-wider"
                 >
-                  Event Date
+                  Date
                 </div>
                 <div
                   className="px-5 py-3 border-b-2 
                             border-gray-200 bg-gray-100 text-center 
                             text-xs font-semibold text-gray-600 
-                            uppercase tracking-wider"
+                            uppercase tracking-wider hidden sm:block"
                 >
                   Region
                 </div>
@@ -80,7 +80,7 @@ function StrandingsTable({ strandings }) {
                             text-xs font-semibold text-gray-600 
                             uppercase tracking-wider"
                 >
-                  Stranded
+                  Animal
                 </div>
                 <div
                   className="px-5 py-3 border-b-2 
@@ -94,7 +94,7 @@ function StrandingsTable({ strandings }) {
                   className="px-5 py-3 border-b-2 
                             border-gray-200 bg-gray-100 text-center 
                             text-xs font-semibold text-gray-600 
-                            uppercase tracking-wider"
+                            uppercase tracking-wider hidden sm:block"
                 >
                   Investigation
                 </div>
@@ -102,7 +102,7 @@ function StrandingsTable({ strandings }) {
                   className="px-5 py-3 border-b-2 
                             border-gray-200 bg-gray-100 text-center 
                             text-xs font-semibold text-gray-600 
-                            uppercase tracking-wider"
+                            uppercase tracking-wider hidden sm:block"
                 >
                   Cause
                 </div>
