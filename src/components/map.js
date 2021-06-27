@@ -1,4 +1,6 @@
 import React from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { mapBoundsAtom, strandingsAtom } from "../atoms";
 import {
   GoogleMap,
   useJsApiLoader,
@@ -12,13 +14,15 @@ const containerStyle = {
 };
 const center = { lat: 54.2307982, lng: -2.847663 };
 
-function StrandingsMap({ strandings, boundsUpdated }) {
+function StrandingsMap() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyBVRxbVl5Qtm2LFX8ZvYZ34Wg8R_iIRV84",
   });
 
   const [map, setMap] = React.useState(null);
+  const [strandings] = useRecoilState(strandingsAtom);
+  const setMapBounds = useSetRecoilState(mapBoundsAtom);
 
   const onLoad = React.useCallback(function callback(map) {
     setMap(map);
@@ -27,16 +31,36 @@ function StrandingsMap({ strandings, boundsUpdated }) {
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
-  
-  const onBoundsChange = React.useCallback(function callback() {
-    if (map) {
-			if (boundsUpdated) {
-				boundsUpdated(map.getBounds());
-			}
-		}
-  }, [map, boundsUpdated]);
 
-  const options = { imagePath: process.env.PUBLIC_URL + "/images/", gridSize: 20 };
+  
+
+  const onBoundsChange = React.useCallback(
+    
+    function callback() {
+      const boundsUpdated = (bounds) => {
+        const northEast = bounds.getNorthEast();
+        const southWest = bounds.getSouthWest();
+        const newBounds = {
+          latMin: southWest.lat(),
+          latMax: northEast.lat(),
+          lngMin: southWest.lng(),
+          lngMax: northEast.lng(),
+        };
+        setMapBounds(newBounds);
+      };
+      if (map) {
+        boundsUpdated(map.getBounds());
+      }
+    },
+    [map, setMapBounds]
+  );
+
+  
+
+  const options = {
+    imagePath: process.env.PUBLIC_URL + "/images/",
+    gridSize: 20,
+  };
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
