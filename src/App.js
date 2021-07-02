@@ -1,3 +1,4 @@
+import React from 'react';
 import "./App.css";
 import StrandingsMap from "./components/map";
 import StrandingsTable from "./components/table";
