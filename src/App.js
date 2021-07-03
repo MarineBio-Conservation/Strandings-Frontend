@@ -1,22 +1,34 @@
 import React from 'react';
 import "./App.css";
-import StrandingsMap from "./components/map";
-import StrandingsTable from "./components/table";
-import DataController from "./components/dataController";
+import Homepage from './components/homepage'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Navbar from './components/navbar';
 
 function App() {
   return (
-    <>
-      <DataController />
-      <div className="h-screen">
-        <div className="h-3/5">
-          <StrandingsMap />
-        </div>
-        <div className="overflow-auto  h-2/5">
-          <StrandingsTable />
-        </div>
+    <Router>
+      <div className="flex flex-col h-screen">
+        <Navbar/>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/search">
+            <Homepage />
+          </Route>
+          <Route path="/add">
+            <Homepage />
+          </Route>
+          <Route path="/">
+            <Homepage />
+          </Route>
+        </Switch>
       </div>
-    </>
+    </Router>
   );
 }
 
