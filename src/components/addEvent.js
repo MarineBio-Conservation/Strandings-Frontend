@@ -1,7 +1,7 @@
 import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-import StrandingsMap from "./map";
+import AddEventMap from "./addEventMap";
 
 function AddEvent() {
   return (
@@ -30,7 +30,7 @@ function AddEvent() {
             </label>
           </div>
           <div className="w-full h-96">
-            <StrandingsMap />
+            <AddEventMap />
           </div>
         </div>
         <div className="md:flex md:items-center mb-6">
