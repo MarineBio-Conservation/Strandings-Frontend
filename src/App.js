@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import Navbar from './components/navbar';
+import AddEvent from './components/addEvent';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Homepage />
           </Route>
           <Route path="/add">
-            <Homepage />
+            <AddEvent />
           </Route>
           <Route path="/">
             <Homepage />
