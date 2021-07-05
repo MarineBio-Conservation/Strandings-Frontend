@@ -96,6 +96,7 @@ function AddEvent() {
           <div className="md:w-5/6">
             <fieldset
               id="investigation_results"
+		  	  className="flex flex-wrap"
             >
               <label className="px-3"><input className="appearance-none checked:bg-blue-600 checked:border-transparent rounded mx-2" type="checkbox" value="Unknown" />Unknown</label>
               <label className="px-3"><input className="appearance-none checked:bg-blue-600 checked:border-transparent rounded mx-2" type="checkbox" value="Pending" />Pending</label>
