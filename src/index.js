@@ -12,7 +12,9 @@ ReactDOM.render(
       <Auth0Provider
         domain="dev-sscojs5p.us.auth0.com"
         clientId="zBTP9waUmLFPKTuNk5zoQwzai8c5vpxq"
-        redirectUri={window.location.origin}
+        redirectUri={window.location.href}
+        audience="https://api.marinestrandings.com/"
+        scope="write:events approve:events"
       >
         <App />
       </Auth0Provider>

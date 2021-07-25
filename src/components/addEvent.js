@@ -4,6 +4,8 @@ import AddEventMap from "./addEventMap";
 import { Controller, useForm } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
+import Login from "./login";
 
 const labelStyle =
   "block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4";
@@ -318,4 +320,8 @@ function AddEvent() {
   );
 }
 
-export default AddEvent;
+export default withAuthenticationRequired(AddEvent, {
+  onRedirecting: () => (
+    <Login redirectUri="https://www.marinestrandings.com/add" />
+  ),
+});
