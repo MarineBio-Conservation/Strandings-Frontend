@@ -1,19 +1,16 @@
-import React from 'react';
+import React from "react";
 import "./App.css";
-import Homepage from './components/homepage'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import Navbar from './components/navbar';
-import AddEvent from './components/addEvent';
+import Homepage from "./components/homepage";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/navbar";
+import AddEvent from "./components/addEvent";
+import ViewEvent from "./components/viewEvent";
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col h-screen">
-        <Navbar/>
+        <Navbar />
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -23,6 +20,9 @@ function App() {
           </Route>
           <Route path="/add">
             <AddEvent />
+          </Route>
+          <Route path="/view">
+            <ViewEvent />
           </Route>
           <Route path="/">
             <Homepage />
