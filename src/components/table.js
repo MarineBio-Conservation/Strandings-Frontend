@@ -1,10 +1,11 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { filteredStrandings } from "../atoms";
 
 function StrandingsTable() {
   const [strandings] = useRecoilState(filteredStrandings);
+  const history = useHistory();
 
   const dataStyle =
     "px-5 py-5 border-b border-gray-200 text-sm text-gray-900 whitespace-no-wrap text-center capitalize";
@@ -16,7 +17,11 @@ function StrandingsTable() {
 
   const rows = strandings.map((stranding) => {
     return (
-      <tr key={stranding.id}>
+      <tr
+        key={stranding.id}
+        onClick={() => history.push("/view?id=" + stranding.id)}
+        className="cursor-pointer"
+      >
         <td className={dataStyle} key={stranding.id + "_date"}>
           {new Date(stranding.date).toDateString()}
         </td>
@@ -45,14 +50,6 @@ function StrandingsTable() {
         <td className={dataStyleHiddenMobile} key={stranding.id + "_cause"}>
           {stranding.causes ? stranding.causes : "Unknown"}
         </td>
-        <td className={dataStyleHiddenMobile} key={stranding.id + "_details"}>
-          <Link
-            key={stranding.id + "_detailsLink"}
-            to={"/view?id=" + stranding.id}
-          >
-            View...
-          </Link>
-        </td>
       </tr>
     );
   });
@@ -72,7 +69,6 @@ function StrandingsTable() {
                     <th className={headingStyle}>Died</th>
                     <th className={headingStyleHiddenMobile}>Investigation</th>
                     <th className={headingStyleHiddenMobile}>Cause</th>
-                    <th className={headingStyleHiddenMobile}>Details</th>
                   </tr>
                 </thead>
                 <tbody>{rows}</tbody>
